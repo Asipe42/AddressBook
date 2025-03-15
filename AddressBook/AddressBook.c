@@ -138,12 +138,22 @@ void PrintAll()
 
 int RemoveNode(char* pszName)
 {
-	
+
 }
 
+/// <summary>
+/// 이름을 기준으로 특정 노드를 제거한다.
+/// </summary>
 void Remove()
 {
-	
+	char szName[32] = { 0 };
+
+	printf("Please input name: ");
+	fflush(stdin);
+	rewind(stdin);
+	gets_s(szName, sizeof(szName));
+
+	RemoveNode(szName);
 }
 
 int PrintUI()
