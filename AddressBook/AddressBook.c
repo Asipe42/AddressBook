@@ -80,9 +80,36 @@ void Add()
 	AddNewNode(szName, szPhone);
 }
 
+/// <summary>
+/// 이름을 기준으로 특정 노드를 검색한다.
+/// </summary>
 void Search()
 {
-	
+	char szName[32] = { 0 };
+
+	printf("Please input name: ");
+	fflush(stdin);
+	rewind(stdin);
+	gets_s(szName, sizeof(szName));
+
+	USERDATA* pFound = FindNode(szName);
+	if (pFound != NULL)
+	{
+		printf
+		(
+			"[%p] %s\t%s [%p]\n",
+			pFound,
+			pFound->szName,
+			pFound->szPhone,
+			pFound->pNext
+		);
+	}
+	else
+	{
+
+	}
+
+	_getch();
 }
 
 void PrintAll()
