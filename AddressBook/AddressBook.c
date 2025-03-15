@@ -36,7 +36,27 @@ USERDATA* FindNode(char* pszName)
 
 int AddNewNode(char* pszName, char* pszPhone)
 {
+	// 이미 같은 이름이 존재할 경우 추가할 수 없다.
+	if (FindNode(pszName) != NULL)
+	{
+		return 0;
+	}
 
+	USERDATA* pNewUser = (USERDATA*)malloc(sizeof(USERDATA));
+	if (pNewUser == NULL)
+	{
+		printf("ERROR: 메모리 할당 실패");
+		return 0;
+	}
+
+	memset(pNewUser, 0, sizeof(USERDATA));
+
+	sprintf_s(pNewUser->szName, sizeof(pNewUser->szName), "%s", pszName);
+	sprintf_s(pNewUser->szPhone, sizeof(pNewUser->szPhone), "%s", pszPhone);
+	pNewUser->pNext = g_Head.pNext;
+	g_Head.pNext = pNewUser;
+
+	return 1;
 }
 
 /// <summary>
