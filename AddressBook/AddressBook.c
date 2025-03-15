@@ -45,7 +45,7 @@ int AddNewNode(char* pszName, char* pszPhone)
 	USERDATA* pNewUser = (USERDATA*)malloc(sizeof(USERDATA));
 	if (pNewUser == NULL)
 	{
-		printf("ERROR: 메모리 할당 실패");
+		puts("ERROR: 메모리 할당 실패");
 		return 0;
 	}
 
@@ -106,7 +106,7 @@ void Search()
 	}
 	else
 	{
-
+		puts("ERROR: 데이터를 찾을 수 없습니다.");
 	}
 
 	_getch();
@@ -132,11 +132,11 @@ int PrintUI()
 	int nInput = 0;
 
 	system("cls");
-	printf("[1] Add\n");
-	printf("[2] Search\n");
-	printf("[3] Print all\n");
-	printf("[4] Remove\n");
-	printf("[0] Exit\n");
+	puts("[1] Add");
+	puts("[2] Search");
+	puts("[3] Print all");
+	puts("[4] Remove");
+	puts("[0] Exit");
 
 	scanf_s("%d", &nInput);
 
