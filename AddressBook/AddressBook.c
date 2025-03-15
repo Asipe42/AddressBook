@@ -19,12 +19,24 @@ USERDATA g_Head = { 0 };
 
 USERDATA* FindNode(char* pszName)
 {
+	USERDATA* pTemp = g_Head.pNext;
+	
+	while (pTemp != NULL)
+	{
+		if (strcmp(pTemp->szName, pszName))
+		{
+			return pTemp;
+		}
 
+		pTemp = pTemp->pNext;
+	}
+
+	return NULL;
 }
 
 int AddNewNode(char* pszName, char* pszPhone)
 {
-	
+
 }
 
 /// <summary>
