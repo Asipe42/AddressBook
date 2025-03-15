@@ -189,14 +189,44 @@ int PrintUI()
 	return nInput;
 }
 
+
 int LoadList(char* pszFileName)
 {
 	
 }
 
+/// <summary>
+/// 리스트를 파일에 저장한다.
+/// </summary>
+/// <param name="pszFileName"></param>
+/// <returns></returns>
 int SaveList(char* pszFileName)
 {
-	
+	FILE* fp = NULL;
+	fopen(&fp, pszFileName, "wb");
+
+	if (fp == NULL)
+	{
+		puts("ERROR: 파일을 쓰기 모드로 열지 못했습니다.");
+		_getch();
+
+		return 0;
+	}
+
+	USERDATA* pTemp = g_Head.pNext;
+	while (pTemp != NULL)
+	{
+		if (fwrite(pTemp, sizeof(USERDATA), 1, fp) != 1)
+		{
+			printf("ERROR: %s에 대한 정보를 저장하는 데 실패했습니다.\n", pTemp->szName);
+		}
+
+		pTemp = pTemp->pNext;
+	}
+
+	fclose(fp);
+
+	return 1;
 }
 
 void ReleaseList()
