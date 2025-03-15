@@ -138,7 +138,24 @@ void PrintAll()
 
 int RemoveNode(char* pszName)
 {
+	USERDATA* pPrev = &g_Head;
+	USERDATA* pDelete = NULL;
 
+	while (pPrev->pNext != NULL)
+	{
+		pDelete = pPrev->pNext;
+		if (strcmp(pDelete->szName, pszName) == 0)
+		{
+			pPrev->pNext = pDelete->pNext;
+			free(pDelete);
+
+			return 1;
+		}
+
+		pPrev = pPrev->pNext;
+	}
+
+	return 0;
 }
 
 /// <summary>
