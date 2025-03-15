@@ -191,7 +191,25 @@ int PrintUI()
 
 int LoadList(char* pszFileName)
 {
+	FILE* fp = NULL;
+	fopen_s(&fp, pszFileName, "rb");
 
+	if (fp == NULL)
+	{
+		return 0;
+	}
+
+	ReleaseList();
+
+	USERDATA* user = { 0 };
+	while (fread(&user, sizeof(USERDATA), 1, fp))
+	{
+		AddNewNode(user->szName, user->szPhone);
+	}
+
+	fclose(fp);
+
+	return 0;
 }
 
 /// <summary>
