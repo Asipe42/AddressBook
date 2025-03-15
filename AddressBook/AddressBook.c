@@ -20,10 +20,10 @@ USERDATA g_Head = { 0 };
 USERDATA* FindNode(char* pszName)
 {
 	USERDATA* pTemp = g_Head.pNext;
-	
+
 	while (pTemp != NULL)
 	{
-		if (strcmp(pTemp->szName, pszName))
+		if (strcmp(pTemp->szName, pszName) == 0)
 		{
 			return pTemp;
 		}
