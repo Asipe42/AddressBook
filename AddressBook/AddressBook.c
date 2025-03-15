@@ -112,9 +112,28 @@ void Search()
 	_getch();
 }
 
+/// <summary>
+/// 리스트에 들어있는 모든 데이터를 출력한다.
+/// </summary>
 void PrintAll()
 {
-	
+	USERDATA* pTemp = g_Head.pNext;
+
+	while (pTemp != NULL)
+	{
+		printf
+		(
+			"[%p] %s\t%s [%p]\n",
+			pTemp,
+			pTemp->szName,
+			pTemp->szPhone,
+			pTemp->pNext
+		);
+
+		pTemp = pTemp->pNext;
+	}
+
+	_getch();
 }
 
 int RemoveNode(char* pszName)
