@@ -220,7 +220,7 @@ int LoadList(char* pszFileName)
 int SaveList(char* pszFileName)
 {
 	FILE* fp = NULL;
-	fopen(&fp, pszFileName, "wb");
+	fopen_s(&fp, pszFileName, "wb");
 
 	if (fp == NULL)
 	{
