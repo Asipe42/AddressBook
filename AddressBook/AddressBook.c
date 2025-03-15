@@ -189,10 +189,9 @@ int PrintUI()
 	return nInput;
 }
 
-
 int LoadList(char* pszFileName)
 {
-	
+
 }
 
 /// <summary>
@@ -229,9 +228,23 @@ int SaveList(char* pszFileName)
 	return 1;
 }
 
+/// <summary>
+/// 리스트의 모든 데이터를 삭제하는 함수
+/// </summary>
 void ReleaseList()
 {
-	
+	USERDATA* pTemp = g_Head.pNext;
+	USERDATA* pDelete = NULL;
+
+	while (pTemp != NULL)
+	{
+		pDelete = pTemp;
+		pTemp = pTemp->pNext;
+
+		free(pDelete);
+	}
+
+	memset(&g_Head, 0, sizeof(USERDATA));
 }
 
 void main()
